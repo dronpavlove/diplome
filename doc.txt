@@ -1,0 +1,57 @@
+class Topping(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+class Pizza(models.Model):
+    name = models.CharField(max_length=30)
+    toppings = models.ManyToManyField('Topping', through='ToppingAmount', related_name='pizzas')
+
+
+class ToppingAmount(models.Model):
+
+    REGULAR = 1
+    DOUBLE = 2
+    TRIPLE = 3
+    AMOUNT_CHOICES = (
+        (REGULAR, 'Regular'),
+        (DOUBLE, 'Double'),
+        (TRIPLE, 'Triple'),
+    )
+
+    pizza = models.ForeignKey('Pizza', related_name='topping_amounts', on_delete=models.SET_NULL, null=True)
+    topping = models.ForeignKey('Topping', related_name='topping_amounts', on_delete=models.SET_NULL, null=True, blank=True)
+    amount = models.IntegerField(choices=AMOUNT_CHOICES, default=REGULAR)
+
+
+ToppingAmount.objects.create(pizza=super_pep, topping=pepperoni, amount=ToppingAmount.DOUBLE)
+
+for top_amt in super_pep.topping_amounts.all():
+    print(top_amt.topping.name, top_amt.get_amount_display())
+
+for topping in super_pep.toppings.all():
+    for top_amt in topping.topping_amount.all():
+        print(topping.name, top_amt.amount, top_amt.get_amount_display())
+
+"""
+Без related_name, мы бы получили все пиццы, которые используют определенную начинку с помощью pizza_set:
+
+>> canadian_bacon.pizza_set.all()
+<QuerySet [<Pizza: Hawaiian>]>
+
+Добавление related_name «пиццы» к toppings атрибуту позволяет нам получить все начинки для пиццы следующим образом:
+
+>> canadian_bacon.pizzas.all()
+<QuerySet [<Pizza: Hawaiian>]>
+
+"""
+'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'my_db_megano',  # 'meganodb',
+        'USER': 'megano',  # 'postgres',
+        'PASSWORD': 'megano',  # 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }

@@ -1,0 +1,1 @@
+{"model": "products.product", "pk": 32, "fields": {"name": "TCHASY", "article": "587706108", "description": "\u0435\u0441\u0442\u044c \u0441\u0443\u043f\u0435\u0440\u0441\u043a\u0430\u044f \u0441\u0442\u0440\u0435\u043b\u043a\u0430", "price": "3200.00", "rating": "0.00", "flag_limit": false, "category": 4, "tag": "", "promotion_group": null, "tags": []}}

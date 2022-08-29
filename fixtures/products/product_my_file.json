@@ -1,0 +1,61 @@
+[
+{
+  "model": "products.product",
+  "fields": {
+    "name": "Tasks1",
+    "article": "tasks1",
+    "description": "",
+    "price": "3200.00",
+    "rating": "0.00",
+    "flag_limit": false,
+    "category": 4,
+    "tag": "",
+    "promotion_group": null,
+    "tags": []
+  }
+},
+{
+  "model": "products.product",
+  "fields": {
+    "name": "Tasks2",
+    "article": "tasks2",
+    "description": "",
+    "price": "1500.00",
+    "rating": "0.00",
+    "flag_limit": false,
+    "category": 12,
+    "tag": "",
+    "promotion_group": 1,
+    "tags": []
+  }
+},
+{
+  "model": "products.product",
+  "fields": {
+    "name": "Tasks3",
+    "description": "",
+    "price": "1500.00",
+    "rating": "0.00",
+    "flag_limit": false,
+    "category": 34,
+    "tag": "",
+    "promotion_group": 1,
+    "tags": []
+  }
+},
+{
+  "model": "products.product",
+  "fields": {
+    "name": "Tasks4",
+    "article": "tasks4",
+    "description": "",
+    "price": "610.00",
+    "rating": "0.00",
+    "flag_limit": false,
+    "category": 17,
+    "tag": "",
+    "promotion_group": null,
+    "tags": []
+  }
+}
+]
